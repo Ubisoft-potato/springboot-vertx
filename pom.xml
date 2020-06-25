@@ -30,6 +30,7 @@
             <artifactId>vertx-web</artifactId>
             <version>3.9.1</version>
         </dependency>
+        <!-- spring Context with verticle factory-->
         <dependency>
             <groupId>com.chibchasoft</groupId>
             <artifactId>vertx-spring-verticle-factory</artifactId>

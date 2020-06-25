@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @ClassName HttpServerVerticle @Description TODO @Author long @Date 2020/5/26 15:46 @Version 1.0
  */
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE) //must be prototype for deploy multi instances
 @Slf4j
 public class HttpServerVerticle extends AbstractVerticle {
 
@@ -37,9 +37,7 @@ public class HttpServerVerticle extends AbstractVerticle {
                 .setDeleteUploadedFilesOnEnd(true))
         .handler(fileUploadHandler);
 
-    for (int i = 0; i < 12; i++) {
       vertx.createHttpServer().requestHandler(router).listen(8080);
-    }
   }
 
   public HttpServerVerticle(

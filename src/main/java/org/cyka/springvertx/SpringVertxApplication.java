@@ -23,7 +23,9 @@ public class SpringVertxApplication implements CommandLineRunner {
   @Override
   public void run(String... args) {
     Vertx vertx = Vertx.vertx();
+    // set spring application context for verticle factory
     ApplicationContextProvider.setApplicationContext(applicationContext);
+    // deploy multi http verticle under spring context
     vertx.deployVerticle(
         "spring:httpServerVerticle",
         new DeploymentOptions()
@@ -34,6 +36,7 @@ public class SpringVertxApplication implements CommandLineRunner {
             log.info("Http DeploymentId: {}", res.result());
           }
         });
+    // file handle verticle as worker verticle
     vertx.deployVerticle(
         FIleServiceVerticle.class,
         new DeploymentOptions().setWorker(true).setInstances(6),
