@@ -1,0 +1,11 @@
+spring:
+  redis:
+    host: 192.168.123.123
+    database: 0
+    port: 6379
+
+logging:
+  level:
+    io:
+      netty: warn
+      vertx: debug
