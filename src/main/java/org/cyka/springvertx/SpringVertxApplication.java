@@ -30,7 +30,7 @@ public class SpringVertxApplication implements CommandLineRunner {
         "spring:httpServerVerticle",
         new DeploymentOptions()
             .setWorkerPoolName("blocking-worker-pool")
-            .setInstances(Runtime.getRuntime().availableProcessors() * 2),
+            .setInstances(Runtime.getRuntime().availableProcessors()),
         res -> {
           if (res.succeeded()) {
             log.info("Http DeploymentId: {}", res.result());
