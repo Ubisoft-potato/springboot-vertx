@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+repositories {
+    maven {
+        url = uri('http://mirrors.cloud.tencent.com/nexus/repository/maven-public/')
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation 'com.chibchasoft:vertx-spring-verticle-factory:1.0.3'
+    implementation 'io.vertx:vertx-core:3.9.1'
+    implementation 'io.vertx:vertx-web:3.9.1'
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    testCompileOnly 'org.projectlombok:lombok:1.18.4'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.4'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootJar {
+    mainClassName = 'org.cyka.springvertx.SpringVertxApplication'
+}
+
+group = 'org.cyka'
+version = '1.0.0-SNAPSHOT'
+description = 'spring-vertx'
+sourceCompatibility = '1.8'
+targetCompatibility = 1.8
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
