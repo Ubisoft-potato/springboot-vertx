@@ -5,11 +5,13 @@ plugins {
 }
 
 repositories {
-    maven {
-        url = uri('http://mirrors.cloud.tencent.com/nexus/repository/maven-public/')
-    }
     mavenCentral()
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
 }
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
